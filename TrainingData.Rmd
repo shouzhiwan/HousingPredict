@@ -5,7 +5,26 @@ date: "8/2/2018"
 output: html_document
 ---
 
+Include the needed library
+
 ```{r}
+library(ggplot2)
+library(cowplot)
+library(randomForest)
+```
 
+Read some data from the train set
+```{r}
+train <- read.csv("train.csv", header = TRUE)
+test <- read.csv("test.csv", header = TRUE)
+summary(train)
+```
+Check out the structure of the object
+```{r}
+str(train)
+```
 
+Check out the unique value of each objects
+```{r}
+apply(train, 2, function(x) length(unique(x)))
 ```
