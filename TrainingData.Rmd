@@ -1,6 +1,6 @@
 ---
 title: "Training"
-author: "VCT"
+author: "VCT Kevin"
 date: "8/2/2018"
 output: html_document
 ---
