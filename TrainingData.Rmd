@@ -11,6 +11,8 @@ Include the needed library
 library(ggplot2)
 library(cowplot)
 library(randomForest)
+library(party)
+library(caret)
 ```
 
 Read some data from the train set
@@ -27,5 +29,19 @@ str(train)
 Check out the unique value of each objects
 ```{r}
 apply(train, 2, function(x) length(unique(x)))
-summary(train)
+```
+With the summary of the data, we use random forest algorithm to generate a model. First we seperate the train data set into two parts, first a training parts and a test part for testing the acuraccy of the different trees.
+```{r}
+
+set.seed(123)
+ind <- sample(2, nrow(train), replace = TRUE, prob = c(0.7,0.3))
+trainSet <- train[ind == 1,]
+testSet <- train[ind == 2,]
+
+set.seed(42)
+trainSet.imputed <- rfImpute(SalePrice~., data = trainSet, iter = 6)
+set.seed(222)
+rf <- randomForest(SalePrice~., data = trainSet.imputed)
+rf
+
 ```
