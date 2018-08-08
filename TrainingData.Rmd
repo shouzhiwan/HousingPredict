@@ -27,4 +27,5 @@ str(train)
 Check out the unique value of each objects
 ```{r}
 apply(train, 2, function(x) length(unique(x)))
+summary(train)
 ```
