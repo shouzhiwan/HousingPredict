@@ -44,4 +44,6 @@ set.seed(222)
 rf <- randomForest(SalePrice~., data = trainSet.imputed)
 rf
 
+importance(rf)
+varImpPlot(rf)
 ```
